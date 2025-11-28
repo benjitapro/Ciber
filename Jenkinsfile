@@ -56,11 +56,8 @@ pipeline {
             }
         }
         stage('Dependency Check') {
-            environment {
-                NVD_API_KEY = credentials('nvdApiKey')
-            }
             steps {
-                dependencyCheck odcInstallation: 'DependencyCheck', additionalArguments: '--nvdApiKey ' + NVD_API_KEY + ' --nvdApiDelay 5000 --format HTML --scan ./ --out dependency-check-report'
+                dependencyCheck odcInstallation: 'DependencyCheck', additionalArguments: '--noupdate --format HTML --scan ./ --out dependency-check-report'
             }
         }
 
