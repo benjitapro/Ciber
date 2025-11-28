@@ -60,7 +60,7 @@ pipeline {
                 NVD_API_KEY = credentials('nvdApiKey')
             }
             steps {
-                dependencyCheck additionalArguments: '--format HTML --scan ./ --out dependency-check-report'
+                dependencyCheck odcInstallation: 'DependencyCheck', additionalArguments: '--format HTML --scan ./ --out dependency-check-report'
             }
         }
 
